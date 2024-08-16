@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    {% load static %}
+</head>
+<style>
+    /* body{
+        background-color:cadetblue;
+        
+    } */
+    
+</style>
+
+<body style="background-image: url('{% static "image/cbg.webp" %}');background-repeat:no-repeat;background-size:100%">
+    
+         <br><br>    
+        <!-- <center class="text-danger">
+        <h1>REGISTRATION</h1></center> -->
+
+      
+        
+      <div class="container bg-light" style="border-radius: 10px; width:50%;"><br>
+        <center><h3>REGISTRATION</h3></center>
+        <form action="{% url 'addsignup' %}" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+            <input type="text" name="first_name" placeholder="Firstname" class="form-control"><br>
+            <input type="text" name="last_name" placeholder="last_name" class="form-control"><br>
+            <input type="text" name="username" placeholder="username" class="form-control"><br>
+            <input type="password" name="password" placeholder="password" class="form-control"><br>
+            <input type="password" name="cpasswrd" placeholder="cpasswrd" class="form-control"><br>
+            <input type="text" name="Address" placeholder="Address" class="form-control"><br>
+            <input type="number" name="Age" placeholder="Age" class="form-control"><br>
+            <input type="email" name="email" placeholder="Emailaddress" class="form-control"><br>
+            <input type="text" name="Contactnumber" placeholder="Contactnumber" class="form-control"><br>
+            <select class="form-control" name="ok">
+              {% for c in c %}
+              <option value="{{c.id}}">{{c.coursename}}</option>
+              {% endfor %}
+
+            </select><br>
+            <input type="file" name="img"  class="formcontrol" accept="img/"><br><br>
+            <button type="submit" class="btn btn-info" style="margin-left: 40%;">submit</button><br>
+            
+        </form>
+
+      </div>
+      <br><br>
+      <center class="text-light"> Already have an Account ? <button type="button" class="btn btn-primary" ><a href="{% url 'admin' %}" class="text-light">signin</a></button></center><br><br>
+      <br><br>
+{% block content %}
+{% endblock%}
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    {% load static %}
+
+</head>
+<style>
+    /* div{
+        background-color: azure; width: 40px;
+        border-radius: 10px; width:40%;
+    } */
+</style>
+
+<body style="background-image: url('{% static "image/cbg.webp" %}');background-repeat:no-repeat;background-size:100%">
+    <center><h1 class="text-danger">ABC UNIVERSITY</h1>
+        <!-- <h5>"Education is the key to unlock the golden door of freedom." - George Washington Carver</h5><br><br><br> -->
+    </center><br><br>
+
+    <div class="container">
+        {% for message in messages %}
+        <h5>
+            <div class="alert alert-danger" style="width:50%">
+                {{message}}
+
+            </div>
+        </h5>
+              {% endfor %}
+
+       
+      </div>
+      
+      <div class="container bg-light" style="border-radius: 10px; width:30%;"><br>
+        <center><h4>LOGIN</h4></center>
+        <form style=" width:50%; margin-left:30%;" action="{% url 'loginn' %}" method="post">
+            {% csrf_token %}
+            
+            
+            <input type="text" class="form-control" name="username" placeholder="username"><br>
+            
+            <input type="password" class="form-control" name="password" placeholder="password"><br>
+            <button type="submit" class="btn btn-info">Login</button>
+
+        </form><br>
+      </div><br><br>
+     <center class="text-light">
+        Create an Account ? <button type="button" class="btn btn-primary" ><a href="{% url 'signup' %}" class="text-light">signup</a></button>
+     </center>
+    
+    
+
+</body>
+</html>

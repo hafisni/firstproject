@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    {% load static %}
+    
+</head>
+
+
+
+<body style="background-image: url('{% static "image/blurr.jpeg" %}');background-repeat:no-repeat;background-size:100% 100vh">
+    <nav class="navbar - bg-dark navbar-expand-sm">
+        <a href="" class="navbar-brand text-light">ABC UNIVERSITY</a>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link text-light" href="{% url 'adminnhomepage' %}">Home</a></li>
+            <li class="nav-item"><a class="nav-link text-light" href="{% url 'addcourse' %}">Addcourse</a></li>
+            <li class="nav-item" ><a class="nav-link text-light" href="{% url 'addstudent' %}">Addstudent</a></li>
+            <li class="nav-item"><a class="nav-link text-light" href="{% url 'showteacher' %}">Teacherdetails</a></li>
+            <li class="nav-item"><a class="nav-link text-light" href="{% url 'showstudents' %}">Studentdetails</a></li>
+            <li class="nav-item"><a class="nav-link text-light" href="{% url 'logout' %}">Logout</a></li>
+    
+    
+        </ul>
+    </nav>
+    <br><br>
+      <center>
+        <h1> Student Details</h1>
+        <table border="2" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        studentname
+                    </th>
+                    <th>
+                        Address
+                    </th>
+                    <th>
+                        Age
+                    </th>
+                    <th>
+                        Date
+                    </th>
+                    <th>
+                        Course
+                    </th>
+                    <th>
+                        coursefee
+                    </th>
+                    <th colspan="2">
+                        edit/delete
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for s in students %}
+                <tr>
+                    <td >{{s.studentname}}</td>
+                    <td >{{s.Address}}</td>
+                    <td >{{s.Age}}</td>
+                    <td >{{s.Date}}</td>
+                    <td >{{s.course.coursename}}</td>
+                    <td >{{s.course.coursefee}}</td>
+                    <td><a href="{% url 'edit' s.id %}">edit</a>
+                        <a href="{% url 'delete' s.id %}">delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+      </center>
+{% block content %}
+{% endblock%}
+</body>
+</html>

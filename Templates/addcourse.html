@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    {% load static %}
+    
+</head>
+
+<body style= "background-image: url('{% static "image/clgcamp.jpeg" %}');background-repeat:no-repeat;background-size:100% 100vh">
+    <nav class="navbar - bg-dark navbar-expand-sm">
+        <a href="" class="navbar-brand text-light">ABC UNIVERSITY</a>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link text-light" href="{% url 'adminnhomepage' %}">Home</a></li>
+            <li class="nav-item"><a class="nav-link text-light" href="{% url 'addcourse' %}">Addcourse</a></li>
+            <li class="nav-item" ><a class="nav-link text-light" href="{% url 'addstudent' %}">Addstudent</a></li>
+            <li class="nav-item"><a class="nav-link text-light" href="{% url 'showteacher' %}">Teacherdetails</a></li>
+            <li class="nav-item"><a class="nav-link text-light" href="{% url 'showstudents' %}">Studentdetails</a></li>
+            <li class="nav-item"><a class="nav-link text-light" href="{% url 'logout' %}">Logout</a></li>
+    
+    
+        </ul>
+    </nav>
+    <br><br><br>
+      
+      <div class="container bg-light" style="border-radius: 10px; width:40%;">
+        <center><h4 style="color:darkgreen;">Add New Course</h4></center>
+        <form action="{% url 'addcoursedb' %}" method="post">
+            {% csrf_token %}
+            <br>
+            <input type="text" class="form-control" name="coursename" placeholder="coursename"><br>
+            
+            <input type="number" class="form-control" name="coursefee" placeholder="coursefee"><br>
+            <button type="submit" class="btn btn-info">submit</button>
+
+        </form>
+        <br>
+      </div>
+
+      </div>
+      
+{% block content %}
+{% endblock%}
+
+</body>
+</html>
